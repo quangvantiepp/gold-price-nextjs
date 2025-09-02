@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 
 // Load environment variables
-const DB_URL 
+const DB_URL = process.env.DB_URL
 
 const pool = new Pool({
   connectionString: DB_URL,
