@@ -219,3 +219,4 @@ For support or questions, please create an issue on GitHub.
 - Responsive design
 - Chart functionality
 
+

@@ -20,3 +20,4 @@ ON CONFLICT (name) DO NOTHING;
 -- Tạo index để tối ưu query
 CREATE INDEX IF NOT EXISTS idx_brands_name ON brands(name);
 CREATE INDEX IF NOT EXISTS idx_brands_active ON brands(is_active);
+
