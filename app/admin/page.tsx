@@ -239,7 +239,7 @@ export default function AdminPage() {
           updateBrand(editingBrandId, brandForm.name);
           
           // Cập nhật formData.brand nếu đang sửa thương hiệu đang được chọn
-          if (formData.brand === brands[editingBrandId]) {
+          if (formData.brand === brands[editingBrandId]?.name) {
             setFormData(prev => ({ ...prev, brand: brandForm.name }));
           }
         } else {

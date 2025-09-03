@@ -15,7 +15,7 @@ interface BrandContextType {
   brands: Brand[];
   loading: boolean;
   updateBrands: (newBrands: Brand[]) => void;
-  addBrand: (brand: Brand) => void;
+  addBrand: (brandName: string) => Promise<{ success: boolean; data?: Brand; error?: string }>;
   updateBrand: (id: number, newName: string) => void;
   deleteBrand: (id: number) => void;
 }
@@ -63,7 +63,13 @@ export function BrandProvider({ children }: { children: ReactNode }) {
       } catch (error) {
         console.error('Error loading brands:', error);
         // Fallback to default brands if API fails
-        setBrands(['SJC', 'PNJ', 'DOJI', 'Phú Quý', 'Bảo Tín Minh Châu']);
+        setBrands([
+          { id: 1, name: 'SJC', description: 'SJC Gold', is_active: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 2, name: 'PNJ', description: 'Phú Nhuận Jewelry', is_active: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 3, name: 'DOJI', description: 'DOJI Gold', is_active: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 4, name: 'Phú Quý', description: 'Phú Quý Gold', is_active: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: 5, name: 'Bảo Tín Minh Châu', description: 'Bảo Tín Minh Châu Gold', is_active: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
+        ]);
       } finally {
         setLoading(false);
       }
@@ -72,7 +78,7 @@ export function BrandProvider({ children }: { children: ReactNode }) {
     loadBrands();
   }, []);
 
-  const updateBrands = (newBrands: string[]) => {
+  const updateBrands = (newBrands: Brand[]) => {
     setBrands(newBrands);
   };
 
